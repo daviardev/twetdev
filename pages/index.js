@@ -2,9 +2,11 @@ import Head from 'next/head'
 import Link from 'next/link'
 // Link se usa como un sistema de rutas sin necesidad de recargar la página
 import { useRouter } from 'next/router'
+import { GithubLogin } from '../firebase/index'
 
 const Home = () => {
   const router = useRouter()
+
   return (
     <div>
       <Head>
@@ -17,6 +19,9 @@ const Home = () => {
         <h1>twetdev</h1>
           <nav>
             <Link href='/timeline'>timeline</Link>
+            <button onClick={GithubLogin}>
+                Iniciar sesión con Github
+            </button>
           </nav>
       </main>
       <style jsx>{`
