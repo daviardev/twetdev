@@ -10,7 +10,7 @@ const Timeline = ({ userName, love, isOver }) => {
             <Title>Hi is me { userName }, i love figth, { love }, { isOver }</Title>
 
                 <Link href="/">
-                    <a className={styles.title}>Ir al inicio</a>
+                    <a>Ir al inicio</a>
                 </Link>
         </AppLayout>
         </>

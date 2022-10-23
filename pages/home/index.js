@@ -2,7 +2,7 @@ import Twet from '../../components/Twet'
 
 import { useState, useEffect } from 'react'
 
-import styles from './styles.module.css'
+import styled from 'styled-components'
 
 const Home = () => {
     const [timeline, setTimeline] = useState([])
@@ -15,26 +15,53 @@ const Home = () => {
     return (
         <>
             <div>
-                <header className={styles.header}>
-                    <h2 className={styles.title_page}>Inicio</h2>
-                </header>
-                <section className={styles.section}>
+                <Header>
+                    <Title>Inicio</Title>
+                </Header>
+                <Section>
                     {timeline.map(({ id, username, avatar, message }) => (
-                            <Twet
-                                key={id}
-                                username={username}
-                                avatar={avatar}
-                                message={message}
-                                id={id}
-                            />
+                        <Twet
+                            key={id}
+                            username={username}
+                            avatar={avatar}
+                            message={message}
+                            id={id}
+                        />
                     ))}
-                        </section>
-                        <nav className={styles.nav}>
+                </Section>
+                <Nav>
 
-                </nav>
+                </Nav>
             </div>
-            </>
-            )
-        }
+        </>
+    )
+}
+
+const Header = styled.header `
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    height: 49px;
+    display: flex;
+    position: sticky;
+    top: 0;
+    width: 100%;
+`
+
+const Nav = styled.nav `
+    bottom: 0%;
+    position: sticky;
+    border-top: 1px solid #ccc;
+    height: 49px;
+    width: 100%;
+`
+
+const Title = styled.h2 `
+    font-size: 21px;
+    font-weight: 800;
+`
+
+const Section = styled.section `
+    padding-top: 49px;
+`
 
 export default Home

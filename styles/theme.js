@@ -6,7 +6,7 @@ export const colors = {
     primary: '#0099ff',
     secondary: '#1c5480',
     white: '#ffffff',
-    black: 'rgb(37, 37, 37)'
+    black: '#000000'
 }
 
 export const breakpoint = {

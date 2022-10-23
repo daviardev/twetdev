@@ -1,23 +1,36 @@
-import styles from './styles.module.css'
-
 import Avatar from '../Avatar'
 
-// 2:03:59
+import styled from 'styled-components'
 
 const Twet = ({ username, avatar, id, message }) => {
     return (
         <>
-            <article className={styles.article}>
-                <div className={styles.content_data_user}>
+            <Article>
+                <AvatarContent>
                     <Avatar alt={username} src={avatar} />
-                </div>
+                </AvatarContent>
                 <section>
                     <strong>{username}</strong>
-                    <p className={styles.text_message}>{message}</p>
+                    <P>{message}</P>
                 </section>
-            </article>
+            </Article>
         </>
     )
 }
+
+const Article = styled.article `
+    border-bottom: 2px solid #eaf7ff;
+    display: flex;
+    padding: 10px 15px;
+`
+
+const AvatarContent = styled.div `
+    padding-right: 8px;
+`
+
+const P = styled.p `
+    line-height: 1.3125;
+    margin: 0;
+`
 
 export default Twet
