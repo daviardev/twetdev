@@ -1,17 +1,19 @@
 import Twet from '../../components/Twet'
+import useUser from '../../hooks/useUser'
 
 import { useState, useEffect } from 'react'
+
+import { fetchLatestTwits } from '../../firebase/client'
 
 import styles from './styles.module.css'
 
 const Home = () => {
     const [timeline, setTimeline] = useState([])
+    const user = useUser()
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/statuses/homeTimeline')
-            .then(res => res.json())
-            .then(setTimeline)
-    }, [])
+        user && fetchLatestTwits().then(setTimeline)
+    }, [user])
     return (
         <>
             <div>
@@ -19,13 +21,15 @@ const Home = () => {
                     <h2 className={styles.title}>Inicio</h2>
                 </header>
                 <section>
-                    {timeline.map(({ id, username, avatar, message }) => (
+                    {timeline.map(({ id, username, avatar, content, userId, createdAt }) => (
                         <Twet
-                            key={id}
-                            username={username}
-                            avatar={avatar}
-                            message={message}
                             id={id}
+                            key={id}
+                            userId={userId}
+                            avatar={avatar}
+                            content={content}
+                            username={username}
+                            createdAt={createdAt}
                         />
                     ))}
                 </section>
