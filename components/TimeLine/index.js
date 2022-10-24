@@ -1,20 +1,13 @@
 import Link from "next/link"
-import AppLayout from "../AppLayout"
-
-import styles from './styles.module.css'
 
 const Timeline = ({ userName, love, isOver }) => {
-    return (
-        <>
-        <AppLayout>
-            <Title>Hi is me { userName }, i love figth, { love }, { isOver }</Title>
+    return <>
+            <h1>Hi is me { userName }, i love figth, { love }, { isOver }</h1>
 
                 <Link href="/">
                     <a>Ir al inicio</a>
                 </Link>
-        </AppLayout>
         </>
-    )
 }
 
 Timeline.getInitialProps = () => {

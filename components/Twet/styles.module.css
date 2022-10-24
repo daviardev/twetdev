@@ -1,0 +1,14 @@
+.article {
+    border-bottom: 1px solid #eee;
+    display: flex;
+    padding: 10px 15px;
+}
+
+.avatar_content {
+    padding-right: 8px;
+}
+
+.paragraph {
+    line-height: 1.3125;
+    margin: 0;
+}

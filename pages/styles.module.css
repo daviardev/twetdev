@@ -1,0 +1,27 @@
+.image {
+    width: 120px;
+  }
+
+  .content {
+    margin-top: 18px;
+  }
+
+  .section {
+    display: grid;
+    place-items: center;
+    place-content: center;
+    height: 100%;
+  }
+
+  .title {
+    color: #0099ff;
+    font-weight: 800;
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+
+  .subTitle {
+    color: #1c5480;
+    font-size: 16px;
+    margin: 0;
+  }

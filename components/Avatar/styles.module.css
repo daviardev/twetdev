@@ -1,0 +1,14 @@
+.content {
+    align-items: center;
+    display: flex;
+}
+
+.image {
+    border-radius: 9999px;
+    width: 49px;
+    height: 49px;
+}
+
+.sub_text_strong {
+    margin-left: 8px;
+}

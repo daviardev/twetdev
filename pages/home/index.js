@@ -2,7 +2,7 @@ import Twet from '../../components/Twet'
 
 import { useState, useEffect } from 'react'
 
-import styled from 'styled-components'
+import styles from './styles.module.css'
 
 const Home = () => {
     const [timeline, setTimeline] = useState([])
@@ -15,10 +15,10 @@ const Home = () => {
     return (
         <>
             <div>
-                <Header>
-                    <Title>Inicio</Title>
-                </Header>
-                <Section>
+                <header className={styles.header}>
+                    <h2 className={styles.title}>Inicio</h2>
+                </header>
+                <section>
                     {timeline.map(({ id, username, avatar, message }) => (
                         <Twet
                             key={id}
@@ -28,40 +28,13 @@ const Home = () => {
                             id={id}
                         />
                     ))}
-                </Section>
-                <Nav>
+                </section>
+                <nav className={styles.navbar}>
 
-                </Nav>
+                </nav>
             </div>
         </>
     )
 }
-
-const Header = styled.header `
-    align-items: center;
-    border-bottom: 1px solid #ccc;
-    height: 49px;
-    display: flex;
-    position: sticky;
-    top: 0;
-    width: 100%;
-`
-
-const Nav = styled.nav `
-    bottom: 0%;
-    position: sticky;
-    border-top: 1px solid #ccc;
-    height: 49px;
-    width: 100%;
-`
-
-const Title = styled.h2 `
-    font-size: 21px;
-    font-weight: 800;
-`
-
-const Section = styled.section `
-    padding-top: 49px;
-`
 
 export default Home
