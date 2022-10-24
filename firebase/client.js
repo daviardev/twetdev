@@ -12,20 +12,23 @@ const firebaseConfig = {
 
 !firebase.apps.length && firebase.initializeApp(firebaseConfig)
 
+const db = firebase.firestore()
+
 const mapUserFromFirebaseAuth = (user) => {
-  const { displayName, email, photoURL } = user
+  const { displayName, email, photoURL, uid } = user
 
   return {
     avatar: photoURL,
     username: displayName,
-    email
+    email,
+    uid
   }
 }
 
 export const onAuthStateChanged = (onChange) => {
   return firebase.auth().onAuthStateChanged(user => {
     const normalizedUser = user ?
-    mapUserFromFirebaseAuth(user) : null
+      mapUserFromFirebaseAuth(user) : null
     onChange(normalizedUser)
   })
 }
@@ -37,4 +40,39 @@ export const loginWithGithub = () => {
     .auth()
     .signInWithPopup(githubProvider)
     .then(mapUserFromFirebaseAuth)
+}
+
+export const addTwet = ({ avatar, content, userId, username }) => {
+  return db.collection('twits').add({
+    avatar,
+    content,
+    userId,
+    username,
+    createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
+    likesCount: 0,
+    sharedCount: 0
+  })
+}
+
+export const fetchLatestTwits = () => {
+  return db
+    .collection('twits')
+    .get()
+    .then(({ docs }) => {
+      return docs.map((doc) => {
+        const data = doc.data()
+        const id = doc.id
+        const { createdAt } = data
+
+        const date = new Date(createdAt.seconds * 1000)
+        const normalizeCreateAt = new Intl.DateTimeFormat('es-CO').format(date)
+
+        return {
+          id,
+          ...data,
+          createdAt: normalizeCreateAt
+        }
+      })
+    })
+
 }
