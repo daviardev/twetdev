@@ -1,5 +1,6 @@
-import { useRouter } from 'next/router'
+import Head from 'next/head'
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 
 import Button from '../../../components/Button'
 import useUser from '../../../hooks/useUser'
@@ -46,18 +47,18 @@ const ComposeTwet = () => {
     }
     const isButtonDisabled = !message.length || status === COMPOSE_STATES.LOADING
 
-
-    return (
-        <>
-            <form onSubmit={handleSubmit}>
-                <textarea className={styles.writeText} onChange={handleChange} value={message} placeholder='¿Qué está pasando?'></textarea>
-                <div className={styles.content}>
-                    <Button disabled={isButtonDisabled}>Twittear</Button>
-                </div>
-            </form>
-        </>
-
-    )
+    return <>
+        <Head>
+            <title>Crear un twet | twetdev</title>
+            <link rel='icon' href='/logo-dev.png' />
+        </Head>
+        <form onSubmit={handleSubmit}>
+            <textarea className={styles.writeText} onChange={handleChange} value={message} placeholder='¿Qué está pasando?'></textarea>
+            <div className={styles.content}>
+                <Button disabled={isButtonDisabled}>Twittear</Button>
+            </div>
+        </form>
+    </>
 }
 
 export default ComposeTwet
