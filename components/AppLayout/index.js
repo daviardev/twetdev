@@ -1,18 +1,16 @@
 import styles, { globalStyles } from './styles'
 
 const AppLayout = ({ children }) => {
-    return (
-        <>
+    return <>
         <div>
             <main>
-                { children }
+                {children}
             </main>
         </div>
 
-        <style jsx>{ styles }</style>
-        <style jsx global>{ globalStyles }</style>
-        </>
-    )
+        <style jsx>{styles}</style>
+        <style jsx global>{globalStyles}</style>
+    </>
 }
 
 export default AppLayout

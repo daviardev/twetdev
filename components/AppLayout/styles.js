@@ -17,33 +17,32 @@ export const globalStyles = css.global`
     overflow: hidden;
     font-family: ${fonts.base};
   }
-
   * {
     box-sizing: border-box;
   }
-
-  textarea, input {
-    font-family: ${fonts.base}
+  textarea,
+  input {
+    font-family: ${fonts.base};
   }
 `;
 
 export default css`
-  div {
+    div {
     display: grid;
     height: 100vh;
     place-items: center;
   }
-
   main {
     background: #fff;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    overflow-y: auto;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
     height: 100%;
-    width: 100%;
+    overflow-y: auto;
     position: relative;
+    width: 100%;
   }
-
   @media (min-width: ${breakpoint.mobile}) {
     main {
       height: 90vh;
