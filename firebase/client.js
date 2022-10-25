@@ -57,6 +57,7 @@ export const addTwet = ({ avatar, content, userId, username }) => {
 export const fetchLatestTwits = () => {
   return db
     .collection('twits')
+    .orderBy('createdAt', 'desc')
     .get()
     .then(({ docs }) => {
       return docs.map((doc) => {
@@ -64,15 +65,11 @@ export const fetchLatestTwits = () => {
         const id = doc.id
         const { createdAt } = data
 
-        const date = new Date(createdAt.seconds * 1000)
-        const normalizeCreateAt = new Intl.DateTimeFormat('es-CO').format(date)
-
         return {
           id,
           ...data,
-          createdAt: normalizeCreateAt
+          createdAt: +createdAt.toDate()
         }
       })
     })
-
 }
