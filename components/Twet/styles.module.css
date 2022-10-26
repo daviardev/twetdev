@@ -21,3 +21,10 @@
 .dot {
     margin: 0 5px;
 }
+
+.image {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    border-radius: 10px;
+}
