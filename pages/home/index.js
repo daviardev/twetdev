@@ -30,10 +30,11 @@ const Home = () => {
                 <h2 className={styles.title}>Inicio</h2>
             </header>
             <section className={styles.section}>
-                {timeline.map(({ id, username, avatar, content, userId, createdAt }) => (
+                {timeline.map(({ id, username, avatar, content, img, userId, createdAt }) => (
                     <Twet
                         id={id}
                         key={id}
+                        img={img}
                         avatar={avatar}
                         userId={userId}
                         content={content}
