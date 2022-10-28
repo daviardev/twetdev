@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Avatar from '../Avatar'
+import Avatar from 'components/Avatar'
 import useTimeAgo from 'hooks/useTimeAgo'
 
 import styles from './styles.module.css'
