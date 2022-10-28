@@ -1,12 +1,12 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-import useUser from '../../../hooks/useUser'
-import Button from '../../../components/Button'
-import Avatar from '../../../components/Avatar'
+import useUser from 'hooks/useUser'
+import Button from 'components/Button'
+import Avatar from 'components/Avatar'
 
-import { addTwet, uploadImage } from '../../../firebase/client'
+import { addTwet, uploadImage } from 'firebase/client'
 
 import styles from './styles.module.css'
 

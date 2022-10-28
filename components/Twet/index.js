@@ -1,5 +1,7 @@
+import React from 'react'
+
 import Avatar from '../Avatar'
-import useTimeAgo from '../../hooks/useTimeAgo'
+import useTimeAgo from 'hooks/useTimeAgo'
 
 import styles from './styles.module.css'
 
@@ -22,7 +24,7 @@ const Twet = ({
         <header>
           <strong>{username}</strong>
           <span className={styles.dot}>·</span>
-          <span className={styles.date}>{timeago}</span>
+          <time className={styles.date}>{timeago}</time>
         </header>
         <p className={styles.paragraph}>{content}</p>
         {img && <img className={styles.image} src={img} />}

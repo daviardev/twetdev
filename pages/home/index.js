@@ -1,14 +1,14 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
-import Twet from '../../components/Twet'
-import HOME from '../../components/Icons/Home'
-import Search from '../../components/Icons/Search'
-import Create from '../../components/Icons/Create'
-import useUser from '../../hooks/useUser'
+import Twet from 'components/Twet'
+import HOME from 'components/Icons/Home'
+import Search from 'components/Icons/Search'
+import Create from 'components/Icons/Create'
+import useUser from 'hooks/useUser'
 
-import { fetchLatestTwits } from '../../firebase/client'
+import { fetchLatestTwits } from 'firebase/client'
 
 import styles from './styles.module.css'
 

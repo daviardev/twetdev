@@ -1,12 +1,12 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 
-import Button from '../components/Button'
-import GitHub from '../components/Icons/GitHub'
+import Button from 'components/Button'
+import GitHub from 'components/Icons/GitHub'
 
-import useUser, { STATES } from '../hooks/useUser'
-import { loginWithGithub } from '../firebase/client'
+import useUser, { STATES } from 'hooks/useUser'
+import { loginWithGithub } from 'firebase/client'
 
 import styles from './styles.module.css'
 
