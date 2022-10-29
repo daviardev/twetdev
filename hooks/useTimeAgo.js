@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { formatDate } from './useDateTimeFormat'
+import formatDate from './useDateTimeFormat'
 import { DEFAULT_LANGUAGE } from 'contants/locale'
 
 const isRelativeTimeFormatSupported = typeof Intl !== 'undefined' && Intl.RelativeTimeFormat
@@ -27,7 +27,7 @@ const getDateDiffs = (timestamp) => {
     }
 }
 
-const useTimeAgo = (timestamp) => {
+export default function useTimeAgo(timestamp) {
     const [timeago, setTimeago] = useState(() => getDateDiffs(timestamp))
 
     useEffect(() => {
@@ -49,5 +49,3 @@ const useTimeAgo = (timestamp) => {
 
     return rtf.format(value, unit)
 }
-
-export default useTimeAgo
