@@ -1,12 +1,12 @@
 .content {
-    align-items: center;
     display: flex;
+    align-items: center;
 }
 
 .avatar {
-    border-radius: 9999px;
     width: 49px;
     height: 49px;
+    border-radius: 9999px;
 }
 
 .avatar+strong {

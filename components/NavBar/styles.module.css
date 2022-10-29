@@ -1,18 +1,18 @@
 .navbar {
-    background: #fff;
-    bottom: 0;
-    border-top: 1px solid #eee;
-    display: flex;
-    height: 49px;
-    position: sticky;
     width: 100%;
+    bottom: 0;
+    height: 49px;
+    display: flex;
+    position: sticky;
+    background: #fff;
+    border-top: 1px solid #eee;
 }
 
 .navbar a {
-    align-items: center;
-    display: flex;
     flex: 1 1 auto;
     height: 100%;
+    display: flex;
+    align-items: center;
     justify-content: center;
 }
 

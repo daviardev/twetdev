@@ -1,12 +1,12 @@
 .article {
-    border-bottom: 1px solid #eee;
     display: flex;
     padding: 10px 15px;
+    border-bottom: 1px solid #eee;
 }
 
 .article:hover {
-    background: #f5f8fa;
     cursor: pointer;
+    background: #f5f8fa;
 }
 
 .avatar_content {
@@ -14,8 +14,8 @@
 }
 
 .paragraph {
-    line-height: 1.3125;
     margin: 0;
+    line-height: 1.3125;
 }
 
 .date {

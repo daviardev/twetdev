@@ -1,11 +1,7 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import React, { useState, useEffect } from 'react'
 
 import Twet from 'components/Twet'
-import HOME from 'components/Icons/Home'
-import Search from 'components/Icons/Search'
-import Create from 'components/Icons/Create'
 import useUser from 'hooks/useUser'
 
 import { fetchLatestTwits } from 'firebase/client'
@@ -13,8 +9,8 @@ import { fetchLatestTwits } from 'firebase/client'
 import styles from './styles.module.css'
 
 const Home = () => {
-    const [timeline, setTimeline] = useState([])
     const user = useUser()
+    const [timeline, setTimeline] = useState([])
 
     useEffect(() => {
         user && fetchLatestTwits().then(setTimeline)
@@ -30,7 +26,7 @@ const Home = () => {
                 <h2 className={styles.title}>Inicio</h2>
             </header>
             <section className={styles.section}>
-                {timeline.map(({ id, username, avatar, content, img, userId, createdAt }) => (
+                {timeline.map(({ id, img, avatar, userId, content, username, createdAt }) => (
                     <Twet
                         id={id}
                         key={id}
@@ -43,23 +39,6 @@ const Home = () => {
                     />
                 ))}
             </section>
-            <nav className={styles.navbar}>
-                <Link href="/home">
-                    <a>
-                        <HOME width={32} height={32} stroke="#000000" />
-                    </a>
-                </Link>
-                <Link href="/search">
-                    <a>
-                        <Search width={32} height={32} stroke="#000000" />
-                    </a>
-                </Link>
-                <Link href="/compose/twet">
-                    <a>
-                        <Create width={32} height={32} stroke="#000000" />
-                    </a>
-                </Link>
-            </nav>
         </div>
     </>
 }

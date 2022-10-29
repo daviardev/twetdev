@@ -12,17 +12,17 @@ const NavBar = () => {
         <nav className={styles.navbar}>
             <Link href='/home'>
                 <a>
-                    <Home width={32} height={32} stroke="#000000" />
+                    <Home width={32} height={32} stroke='#000000' />
                 </a>
             </Link>
             <Link href='/compose/twet'>
                 <a>
-                    <Create width={32} height={32} stroke="#000000" />
+                    <Create width={32} height={32} stroke='#000000' />
                 </a>
             </Link>
             <Link href='/account'>
                 <a>
-                    <Search width={32} height={32} stroke="#000000" />
+                    <Search width={32} height={32} stroke='#000000' />
                 </a>
             </Link>
         </nav>
