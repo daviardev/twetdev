@@ -41,7 +41,6 @@ const ComposeTwet = () => {
             const onProgress = () => { }
             const onError = () => { }
             const onComplete = () => {
-                console.log('onComplete')
                 task.snapshot.ref.getDownloadURL().then(setImgURL)
             }
 
@@ -87,7 +86,6 @@ const ComposeTwet = () => {
         e.preventDefault()
         setDrag(DRAG_IMAGE_STATES.NONE)
         const file = e.dataTransfer.files[0]
-        console.log()
 
         const task = uploadImage(file)
         setTask(task)
