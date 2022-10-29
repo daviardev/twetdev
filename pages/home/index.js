@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 import Twet from 'components/Twet'
 import useUser from 'hooks/useUser'
 
-import { fetchLatestTwits } from 'firebase/client'
+import { listenLatestTwits } from 'firebase/client'
 
 import styles from './styles.module.css'
 
@@ -13,7 +13,11 @@ const Home = () => {
     const [timeline, setTimeline] = useState([])
 
     useEffect(() => {
-        user && fetchLatestTwits().then(setTimeline)
+        let unSubscribe
+        if (user) {
+            unSubscribe = listenLatestTwits(setTimeline)
+        }
+        return () => unSubscribe && unSubscribe()
     }, [user])
 
     return <>
