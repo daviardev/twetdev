@@ -23,7 +23,7 @@ const Home = () => {
     return <>
         <Head>
             <title>Inicio | twetdev</title>
-            <link rel='icon' href='/logo-dev.png' />
+            <link rel='icon' href='logo-dev.png' />
         </Head>
         <div>
             <header className={styles.header}>
