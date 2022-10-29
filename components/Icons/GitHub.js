@@ -1,7 +1,9 @@
+import * as React from "react"
+
 import styles from './styles.module.css'
 
 const GitHub = (props) => (
-    <svg className={styles.style_svg}
+  <svg className={styles.style_svg}
     aria-hidden="true"
     viewBox="0 0 16 16"
     width={1024}
