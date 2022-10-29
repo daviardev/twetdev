@@ -1,8 +1,20 @@
 import { DEFAULT_LANGUAGE } from 'contants/locale'
 
-export default function useDateTimeFormat(timestamp) {
+const isDateFormatIsSupported = typeof Intl === 'undefined' && Intl.DateTimeFormat
+
+export const formatDate = (timestamp, { language = DEFAULT_LANGUAGE } = {}) => {
     const date = new Date(timestamp)
-    const language = DEFAULT_LANGUAGE
+
+    if (!isDateFormatIsSupported) {
+        const options = {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'numeric',
+            day: 'numeric'
+        }
+
+        return date.toLocaleDateString(language, options)
+    }
 
     const options = {
         year: 'numeric',
@@ -14,4 +26,8 @@ export default function useDateTimeFormat(timestamp) {
     }
 
     return new Intl.DateTimeFormat(language, options).format(date)
+}
+
+export default function useDateTimeFormat(timestamp) {
+    return formatDate(timestamp, { language: DEFAULT_LANGUAGE })
 }
