@@ -4,6 +4,11 @@
     padding: 10px 15px;
 }
 
+.article:hover {
+    background: #f5f8fa;
+    cursor: pointer;
+}
+
 .avatar_content {
     padding-right: 10px;
 }
