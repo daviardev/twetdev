@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 
 import Avatar from 'components/Avatar'
 import useTimeAgo from 'hooks/useTimeAgo'
+import useDateTimeFormat from 'hooks/useDateTimeFormat'
 
 
 import styles from './styles.module.css'
@@ -16,8 +17,9 @@ const Twet = ({
   username,
   createdAt
 }) => {
-  const timeago = useTimeAgo(createdAt)
   const router = useRouter()
+  const timeago = useTimeAgo(createdAt)
+  const createdAtFormat = useDateTimeFormat(createdAt)
 
   const handleClick = (e) => {
     e.preventDefault()
@@ -34,7 +36,7 @@ const Twet = ({
           <strong>{username}</strong>
           <span className={styles.dot}> · </span>
           <Link href={`/status/${id}`}>
-            <time className={styles.date}>{timeago}</time>
+            <time title={createdAtFormat} className={styles.date}>{timeago}</time>
           </Link>
 
         </header>
