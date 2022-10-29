@@ -1,14 +1,6 @@
 import * as firebase from 'firebase'
 
-const firebaseConfig = {
-  apiKey: 'AIzaSyC66mziN8NIuoxUD_W-_kS8FRukpmQ4bcA',
-  authDomain: 'twetdev.firebaseapp.com',
-  projectId: 'twetdev',
-  storageBucket: 'twetdev.appspot.com',
-  messagingSenderId: '1052934596057',
-  appId: '1:1052934596057:web:547679ffdb29314d7625c8',
-  measurementId: 'G-MCMVCZB9SJ'
-}
+const firebaseConfig = JSON.parse(process.env.NEXT_PUBLIC_FIREBASE_CONFIG)
 
 !firebase.apps.length && firebase.initializeApp(firebaseConfig)
 
@@ -55,23 +47,25 @@ export const addTwet = ({ avatar, content, img, userId, username }) => {
   })
 }
 
-export const fetchLatestTwits = () => {
+const mapTwitsFromFirebaseToTwitObject = (doc) => {
+  const data = doc.data()
+  const id = doc.id
+  const { createdAt } = data
+
+  return {
+    id,
+    ...data,
+    createdAt: +createdAt.toDate()
+  }
+}
+
+export const listenLatestTwits = (callback) => {
   return db
     .collection('twits')
     .orderBy('createdAt', 'desc')
-    .get()
-    .then(({ docs }) => {
-      return docs.map((doc) => {
-        const data = doc.data()
-        const id = doc.id
-        const { createdAt } = data
-
-        return {
-          id,
-          ...data,
-          createdAt: +createdAt.toDate()
-        }
-      })
+    .onSnapshot(({ docs }) => {
+      const newTwits = docs.map(mapTwitsFromFirebaseToTwitObject)
+      callback(newTwits)
     })
 }
 
