@@ -1,9 +1,23 @@
 import React from 'react'
 
-const TwitPage = () => {
+import Twet from 'components/Twet'
+
+export default function TwitPage(props) {
     return <>
-        <h1>EYYYY muy buenas a todos guapísimos aqui vegetta 777 en una play directo de maicra</h1>
+        <Twet {...props} />
     </>
 }
 
-export default TwitPage
+TwitPage.getInitialProps = (context) => {
+    const { query, res } = context
+    const { id } = query
+
+    return fetch(`http://localhost:3000/api/twits/${id}`).then(
+        (apiRes) => {
+            if (apiRes.ok) return apiRes.json()
+            if (res) {
+                res.writeHead(301, { location: '/home' }).end()
+            }
+        }
+    )
+}
