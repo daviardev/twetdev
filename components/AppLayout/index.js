@@ -1,10 +1,15 @@
 import styles, { globalStyles } from './styles'
 
+import NavBar from 'components/NavBar'
+
+import React from 'react'
+
 const AppLayout = ({ children }) => {
     return <>
         <div>
             <main>
                 {children}
+                <NavBar />
             </main>
         </div>
 
